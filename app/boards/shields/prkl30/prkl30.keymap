@@ -10,6 +10,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/outputs.h>
+#include "language_german.dtsi"
 
 / {
 
@@ -17,15 +18,37 @@
                 compatible = "zmk,keymap";
 
                 default_layer {
-
-//PUT YOUR KEYMAP COMMENTS HERE                    
-
+    // ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐
+    // │Tab │ Q  │ W  │ E  │ R  │ T  │ Z  │ U  │ I  │ O  │ P  │ Ü  │ Bac  │
+    // ├────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼──────┤
+    // │Low │ A  │ S  │ D  │ F  │ G  │ H  │ J  │ K  │ L  │ Ö  │ Ä  │      │
+    // ├────┼────┼────┼────┼────┼────┴────┼────┼────┼────┼────┼────┴┐ Ent │
+    // │Shft│ Y  │ X  │ C  │ V  │  Space  │ B  │ N  │ M  │ ,  │./Sft│     │
+    // └────┴────┴────┴────┴────┴─────────┴────┴────┴────┴────┴─────┴─────┘
                 bindings = <
-    &kp ESC   &kp Q  &kp W   &kp E   &kp R  &kp T     &kp Z     &kp U  &kp I  &kp O  &kp P     &kp SLASH        &kp BACKSPACE  
-    &kp TAB   &kp A  &kp S   &kp D   &kp F  &kp G     &kp H     &kp J  &kp K  &kp L  &kp BSLH  &kp SINGLE_QUOTE &kp RET   
-    &kp LCTRL &kp Y  &kp X   &kp C   &kp V  &kp SPACE &kp SPACE &kp B  &kp N  &kp M  &kp COMMA &kp LSHFT   
+    &kp TAB   &kp Q  &kp W   &kp E   &kp R  &kp T     &kp Z     &kp U  &kp I  &kp O  &kp P       &kp deUE        &kp BACKSPACE  
+    &mo 1     &kp A  &kp S   &kp D   &kp F  &kp G     &kp H     &kp J  &kp K  &kp L  &kp deOE    &kp deAE        &kp RET   
+    &kp LSHFT &kp Y  &kp X   &kp C   &kp V  &kp SPACE &kp SPACE &kp B  &kp N  &kp M  &kp deCOMMA &kp RSHFT   
                 >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
                 };
+                
+                lower_layer{
+    // Lower
+    // ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐
+    // │Esc │ 1  │ 2  │ 3  │ 4  │ 5  │ 6  │ 7  │ 8  │ 9  │ 0  │ ß  │      │
+    // ├────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼──────┤
+    // │    │    │    │    │    │    │ ←  │ ↓  │ ↑  │ →  │    │    │      │
+    // ├────┼────┼────┼────┼────┼────┴────┼────┼────┼────┼────┼────┴┐ Bac │
+    // │cmd │    │    │    │    │         │    │    │    │opt │ cmd │     │
+    // └────┴────┴────┴────┴────┴─────────┴────┴────┴────┴────┴─────┴─────┘
+    bindings = <
+    &kp ESC   &kp NUMBER_1  &kp NUMBER_2   &kp NUMBER_3   &kp NUMBER_4  &kp NUMBER_5     &kp NUMBER_6     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0       &kp deESZETT        &trans  
+    &trans    &trans        &trans         &trans         &trans        &trans           &kp LEFT         &kp DOWN      &kp UP        &kp RIGHT     &trans             &trans              &kp BACKSPACE   
+    &kp LGUI  &trans        &trans         &trans         &trans        &trans           &trans           &trans        &trans        &trans        &kp RALT           &kp RGUI  
+                >;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+                };
+
         };
 };
